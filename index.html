@@ -7,15 +7,28 @@
 
     <title>Crystal Guessing Game</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="assets/css/style.css" rel="stylesheet">
 
   </head>
   <body>
     <h1>CrystalsCollector</h1>
 
-    <p>Match Number: <span id="randomGuess"></span></p>
+    <h2>Match Number: <span id="randomGuess"></span></h2>
 
-    
+    <h2>Your Total Score: <span id="counter"></span></h2>
+
+      <div id="scoreboard">
+        <h2>Wins: <span id="wins"></span></h2>
+        <h2>Losses: <span id="losses"></span></h2>
+      </div>
+
+      <div id="crystals">
+        <img class="crystalImages" src="assets/images/crystal1.png" alt="crystal1">
+        <img class="crystalImages" src="assets/images/crystal2.jpeg" alt="crystal2">
+        <img class="crystalImages" src="assets/images/crystal3.jpeg" alt="crystal3">
+        <img class="crystalImages" src="assets/images/crystal4.jpeg" alt="crystal4">
+      </div>
 
     <script src="assets/javascript/game.js"></script>
   </body>
