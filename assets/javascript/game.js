@@ -6,71 +6,76 @@ var counter = 0;
 function randomGuess(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-
-$("#randomGuess").text(randomGuess(19,120));
+var secret = randomGuess(19,120);
+$("#randomGuess").text(secret);
 $("#wins").text(wins);
 $("#losses").text(losses);
 
-
 //generate 4 random values between 1-12 for crystals
 var crystalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-var randCrystalVal = crystalArray[Math.floor(Math.random() * crystalArray.length)];
-console.log("randCrystalVal: " + randCrystalVal);
 
-//for (var i = 0; i < crystalArray.length; i++) {
-    var imageCrystal1 = $("<img>");
-    imageCrystal1.addClass("crystal-image");
-    imageCrystal1.attr("src", "../week-4-game/assets/images/crystal1.png");
-    imageCrystal1.attr("data-crystalvalue", randCrystalVal);
-    $("#crystals").append(imageCrystal1);
+var crystalOne = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+var crystalTwo = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+var crystalThree = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+var crystalFour = crystalArray[Math.floor(Math.random() * crystalArray.length)];
 
-    var imageCrystal2 = $("<img>");
-    imageCrystal2.addClass("crystal-image");
-    imageCrystal2.attr("src", "../week-4-game/assets/images/crystal2.jpeg");
-    imageCrystal2.attr("data-crystalvalue", randCrystalVal);
-    $("#crystals").append(imageCrystal2);
+console.log("crystal 1: " + (crystalOne));
+console.log("crystal 2: " + (crystalTwo));
+console.log("crystal 3: " + (crystalThree));
+console.log("crystal 4: " + (crystalFour));
 
-    var imageCrystal3 = $("<img>");
-    imageCrystal3.addClass("crystal-image");
-    imageCrystal3.attr("src", "../week-4-game/assets/images/crystal3.jpeg");
-    imageCrystal3.attr("data-crystalvalue", randCrystalVal);
-    $("#crystals").append(imageCrystal3);
-
-    var imageCrystal4 = $("<img>");
-    imageCrystal4.addClass("crystal-image");
-    imageCrystal4.attr("src", "../week-4-game/assets/images/crystal4.jpeg");
-    imageCrystal4.attr("data-crystalvalue", randCrystalVal);
-    $("#crystals").append(imageCrystal4);
-//};
-    
-//add value of crystal clicked to total score
-
-$(".crystal-image").on("click", function() {
-    var crystalValue = ($(this).attr("data-crystalvalue"));
-    crystalValue = parseInt(crystalValue);
-    
-    counter += crystalValue;
-
-    if (counter === randomGuess) {
-        wins++;
-        resetGame();
-    }
-    else if (counter > randomGuess) {
-        losses++;
-        resetGame();
-    };
-});
+//define and display total score
 $("#counter").text(counter);
 console.log ("counter: " + counter);
 
-//if userScore = randomGuess, add 1 to wins, reset game.
-//if userScore > randomGuess, add 1 to losses, reset game.
+//assign values to proper crystal images on click
+$("#crystalImageOne").on("click", function() {
+    counter+=crystalOne;
+    console.log("test" + crystalOne);
+    $("#counter").text(counter);
+    game();
+});
+
+$("#crystalImageTwo").on("click", function() {
+    counter+=crystalTwo;
+    $("#counter").text(counter);
+    game();
+});
+
+$("#crystalImageThree").on("click", function() {
+    counter+=crystalThree;
+    $("#counter").text(counter);
+    game();
+});
+
+$("#crystalImageFour").on("click", function() {
+    counter+=crystalFour;
+    $("#counter").text(counter);
+    game();
+});
+
+function game() {
+    if (counter === secret) {
+        wins++;
+        $("#wins").text(wins);
+        resetGame();
+    }
+    else if (counter > secret) {
+        losses++;
+        $("#losses").text(losses);
+        resetGame();
+    }
+}
 
 //resetGame() = new randomGuess, userScore = 0, new values for 4 crystals
-
-
-
-
-
-
-
+function resetGame() {
+    secret = randomGuess(19,120);
+    $("#randomGuess").text(secret);
+    crystalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    crystalOne = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+    crystalTwo = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+    crystalThree = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+    crystalFour = crystalArray[Math.floor(Math.random() * crystalArray.length)];
+    counter = 0
+    $("#counter").text(counter);
+}
