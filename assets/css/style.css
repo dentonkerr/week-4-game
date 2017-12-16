@@ -1,0 +1,25 @@
+body {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+h1 {
+    color: blue;
+    font-size: 400%;
+    text-align: center;
+    padding: 2%;
+}
+
+h2 {
+    color: purple;
+    font-size: 275%;
+    text-align: center;
+}
+
+#crystals {
+    text-align: center;
+    padding: 1%;
+}
+
+span {
+    color: green;
+}
